@@ -1,8 +1,9 @@
 li, a{
-    color: rgb(235, 235, 235);
+    color: rgb(20, 60, 86);
+    list-style:none
 }
 body {
-    background: rgb(6, 43, 48);
+    background: rgb(148, 160, 162);
     
 }
 label{
@@ -10,5 +11,5 @@ label{
 }
 
 h1 {
-    color: rgb(235, 235, 235);
+    color: rgb(20, 51, 93);
 }
