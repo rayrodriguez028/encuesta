@@ -2,16 +2,54 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
+<div id="contenido">
+    <img src="{% static 'polls/images/logo.png' %}" alt="ITChetumal">
+    <br>
 <h1>{{ question.question_text }}</h1>
+<br>
+{% if question.id != 21 %}
+<table>
+    <tr>
+        <td>5</td>
+        <td>4</td>
+        <td>3</td>
+        <td>2</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Totalmente de acuerdo</td>
+        <td>Parcialmente de acuerdo</td>
+        <td>Indiferencia</td>
+        <td>Parcialmente en desacuerdo</td>
+        <td>Totalmente en desacuerdo</td>
+    </tr>
+</table>
+<br><br>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
-{% for choice in question.choice_set.all %}
-    <input class="choice" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
-{% endfor %}
-
+    {% for choice in question.choice_set.all %}
+        <input class="choice" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+    {% endfor %}
 <input type="submit" value="Votar">
-
-<!--<a href="http://127.0.0.1:8000/polls/">Volver al inicio</a>-->
 </form>
+</div>
+
+{% else %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <select class="choice" name="choice" id="choice">
+        {% for choice in question.choice_set.all %}
+            <option value="{{ choice.id }}">{{ choice.choice_text }}</option>
+        {% endfor %}
+    </select> 
+    <input type="submit" value="Seleccionar">
+</form>
+<br><br><br>
+</div>
+{% endif %}

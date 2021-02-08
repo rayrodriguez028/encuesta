@@ -4,12 +4,31 @@ li, a{
 }
 body {
     background: rgb(148, 160, 162);
-    
+    background-image: url("images/fondo.jpg");
 }
 label{
-    color: rgb(235, 235, 235);
+    color: rgb(33, 76, 126);
 }
 
 h1 {
     color: rgb(20, 51, 93);
+    text-align: center;
+}
+#contenido{ 	
+    width: 700px;
+    overflow: hidden;
+    margin: 0 auto 0 auto;
+    padding: 25px 33px 33px 25px;
+    background: #FFF url(content.png) repeat-y;
+}
+p{
+    text-align: justify
+}
+table tr, td{
+    border: 1px solid #000;
+    text-align: center;
+}
+img{
+    display:block;
+    margin:auto;
 }

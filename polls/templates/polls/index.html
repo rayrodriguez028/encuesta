@@ -1,11 +1,35 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<div id="contenido">
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 {% if first_question %}
-    <h1>Bienvenido al index de encuestas</h1>
-    <span>De clic en comenzar encuesta</span>
+    <img src="{% static 'polls/images/logo.png' %}" alt="ITChetumal">
+    <h1>ENCUESTA PARA DETERMINACIÓN DEL AMBIENTE DE TRABAJO</h1>
+    <p>
+        El propósito de esta encuesta es identificar las áreas de oportunidad que nos permitan determinar y gestionar el ambiente de trabajo colaborando para cumplir con los requerimientos del Servicio Educativo. <br><br>
+        Recuerda que las respuestas son opiniones basadas en tu experiencia de trabajo, por lo tanto no hay respuestas correctas o incorrectas.<br><br>
+        Por favor, te pedimos que leas cuidadosamente cada una de las preguntas y marques el número que describa mejor tu opinión, con base en la escala siguiente:<br><br>
+    </p>
+    <table>
+        <tr>
+            <td>5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Totalmente de acuerdo</td>
+            <td>Parcialmente de acuerdo</td>
+            <td>Indiferencia</td>
+            <td>Parcialmente en desacuerdo</td>
+            <td>Totalmente en desacuerdo</td>
+        </tr>
+    </table>
+    <br>
+    <span><strong> De clic en comenzar encuesta</strong></span>
     <ul>
     {% for question in first_question %}
         <li><a href="{% url 'polls:detail' question.id %}"> Comenzar encuesta </a></li>
@@ -14,4 +38,7 @@
 {% else %}
     <p>No hay pregustas para responder</p>
     <img src="{% static 'polls/images/gracias.gif' %}" alt="Gracias">
+    <a href="{% url 'polls:index'%}">Volver al inicio</a>
 {% endif %}
+
+</div>
